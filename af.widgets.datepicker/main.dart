@@ -21,6 +21,8 @@ class MyApp extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
+              Text('Click on the inputs to select date and/or time'),
+
               // NOTE: DateFormatting is included when using the widget natively.
               // Due to current DartPad limitations, it's not possible to showcase 
               // the formatting functionality here.
