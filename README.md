@@ -2,6 +2,8 @@
 This repository stores all flutter/dart code samples to be used within __Omega365__ documentation site.
 
 # Adding new samples
+It's recommended to clone __af.widgets.sampletemplate__ folder to use as a starting base for you sample.
+
  1. Create a folder for your sample and name it appropriately.
  2. Add at least a __main.dart__ file to your newly created folder. Below are all the files you can add:
     * __main.dart__ : The code to display — for example, a working or nonworking method.
