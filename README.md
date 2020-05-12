@@ -15,6 +15,6 @@ It's recommended to clone __af.widgets.sampletemplate__ folder to use as a start
 # Displaying your sample using DartPad
 Use the snippet below, replace __[YOUR_SAMPLE_PATH]__ with your sample directory path in the repository.
 
-`<iframe style="width:1000px;height:800px;" src="https://dartpad.dev/embed-flutter.html?gh_owner=Omega365&gh_repo=appframe-flutter-samples-public&gh_path=[YOUR_SAMPLE_PATH]&split=60"></iframe>`
+`<iframe style="width:100%;height:800px;" src="https://dartpad.dev/embed-flutter.html?gh_owner=Omega365&gh_repo=appframe-flutter-samples-public&gh_path=[YOUR_SAMPLE_PATH]&split=60"></iframe>`
 
 * Optionally, you can append __&run=true__ if you want your sample to be automatically ran when the web-page loads.
