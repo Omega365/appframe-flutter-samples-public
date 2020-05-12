@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 
 void main() => runApp(MyApp());
 
@@ -14,50 +15,57 @@ class MyApp extends StatelessWidget {
         appBar: AppBar(
           title: const Text('DatePicker Sample Code'),
         ),
-        body: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            // NOTE: DateFormatting is included when using the widget natively.
-            // Due to current DartPad limitations, it's not possible to showcase 
-            // the formatting functionality here.
+        body: Container(
+          padding: EdgeInsets.all(20),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              // NOTE: DateFormatting is included when using the widget natively.
+              // Due to current DartPad limitations, it's not possible to showcase 
+              // the formatting functionality here.
 
-            // NOTE: We cannot showcase iOS platform date picker via DartPad at the moment.
+              // NOTE: We cannot showcase iOS platform date picker via DartPad at the moment.
 
-            // Default date selection
-            AFDatePicker(
-              title: 'Date Sample',
-              hintText: 'Select a date'
-            ),
+              // Default date selection
+              AFDatePicker(
+                title: 'Date Sample',
+                hintText: 'Select a date'
+              ),
 
-            // DateTime selection
-            AFDatePicker(
-              title: 'DateTime Sample',
-              type: AFDatePickerType.DateTime,
-              hintText: 'Select date and time'
-            ),
+              // DateTime selection
+              AFDatePicker(
+                title: 'DateTime Sample',
+                type: AFDatePickerType.DateTime,
+                hintText: 'Select date and time'
+              ),
 
-            // Time selection
-            AFDatePicker(
-              title: 'Time Sample',
-              type: AFDatePickerType.Time,
-              hintText: 'Select time'
-            ),
+              // Time selection
+              AFDatePicker(
+                title: 'Time Sample',
+                type: AFDatePickerType.Time,
+                hintText: 'Select time'
+              ),
 
-             // Time error showcase
-            AFDatePicker(
-              title: 'Time Sample',
-              type: AFDatePickerType.Time,
-              hintText: 'Select time',
-              errorText: 'Your selected period is not valid.',
-              isInputValid: false,
-            ),
-          ],
+              // Time error showcase
+              AFDatePicker(
+                title: 'Time Sample - error text',
+                type: AFDatePickerType.Time,
+                hintText: 'Select time',
+                errorText: 'Your selected period is not valid.',
+                isInputValid: false,
+              ),
+            ],
+          ),
         ),
       ),
     );
   }
 }
+
+// -----------------------------------------------------------------
+// Ignore the code below, it's required to showcase the sample.
+// -----------------------------------------------------------------
 
 /// Appframe Date Picker widget, respects native date input controls.
 class AFDatePicker extends StatefulWidget {
@@ -149,7 +157,7 @@ class _AFDatePickerState extends State<AFDatePicker> {
   DateTime _firstDate;
   DateTime _lastDate;
   TextEditingController _controller;
-  String _dateFormat;
+  //String _dateFormat;
   IconData _icon;
 
   @override
@@ -163,15 +171,15 @@ class _AFDatePickerState extends State<AFDatePicker> {
 
     switch (widget.type) {
       case AFDatePickerType.Date:
-        _dateFormat = 'MMM d, y';
+        //_dateFormat = 'MMM d, y';
         _icon = Icons.calendar_today;
         break;
       case AFDatePickerType.DateTime:
-        _dateFormat = 'MMM d, y HH:mm';
+        //_dateFormat = 'MMM d, y HH:mm';
         _icon = Icons.calendar_today;
         break;
       case AFDatePickerType.Time:
-        _dateFormat = 'HH:mm';
+        //_dateFormat = 'HH:mm';
         _icon = Icons.access_time;
         break;
     }
@@ -238,24 +246,25 @@ class _AFDatePickerState extends State<AFDatePicker> {
           dateProperty = DateTime(dateProperty.year, dateProperty.month, dateProperty.day, _time.hour, _time.minute);
         }
       }
-    } else {
-      await showCupertinoModalPopup(
-          context: context,
-          builder: (_) {
-            return Container(
-              height: MediaQuery.of(_).size.height * 0.35,
-              child: CupertinoDatePicker(
-                mode: CupertinoDatePickerMode.date,
-                initialDateTime: dateProperty,
-                maximumDate: _firstDate,
-                minimumDate: _lastDate,
-                onDateTimeChanged: (selectedDate) {
-                  dateProperty = selectedDate;
-                },
-              ),
-            );
-          });
-    }
+    } 
+//     else {
+//       await showCupertinoModalPopup(
+//           context: context,
+//           builder: (_) {
+//             return Container(
+//               height: MediaQuery.of(_).size.height * 0.35,
+//               child: CupertinoDatePicker(
+//                 mode: CupertinoDatePickerMode.date,
+//                 initialDateTime: dateProperty,
+//                 maximumDate: _firstDate,
+//                 minimumDate: _lastDate,
+//                 onDateTimeChanged: (selectedDate) {
+//                   dateProperty = selectedDate;
+//                 },
+//               ),
+//             );
+//           });
+//     }
 
     if (dateProperty != null) {
       String inputValue = dateProperty.toString();
