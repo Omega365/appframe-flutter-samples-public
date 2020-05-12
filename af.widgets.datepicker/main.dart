@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/cupertino.dart';
 
 void main() => runApp(MyApp());
 
@@ -23,14 +22,36 @@ class MyApp extends StatelessWidget {
             // Due to current DartPad limitations, it's not possible to showcase 
             // the formatting functionality here.
 
-            // NOTE: The [isAndroid] property is only added in the sample to showcase
-            // date pickers for both iOS and Android. It's handled automatically when
-            // developing native application.
+            // NOTE: We cannot showcase iOS platform date picker via DartPad at the moment.
 
-            // Android sample
-            AFDatePicker(title: 'Android Sample', isAndroid: true),
-            // iOS sample
-            AFDatePicker(title: 'iOS Sample', isAndroid: false),
+            // Default date selection
+            AFDatePicker(
+              title: 'Date Sample',
+              hintText: 'Select a date'
+            ),
+
+            // DateTime selection
+            AFDatePicker(
+              title: 'DateTime Sample',
+              type: AFDatePickerType.DateTime,
+              hintText: 'Select date and time'
+            ),
+
+            // Time selection
+            AFDatePicker(
+              title: 'Time Sample',
+              type: AFDatePickerType.Time,
+              hintText: 'Select time'
+            ),
+
+             // Time error showcase
+            AFDatePicker(
+              title: 'Time Sample',
+              type: AFDatePickerType.Time,
+              hintText: 'Select time',
+              errorText: 'Your selected period is not valid.',
+              isInputValid: false,
+            ),
           ],
         ),
       ),
@@ -40,8 +61,6 @@ class MyApp extends StatelessWidget {
 
 /// Appframe Date Picker widget, respects native date input controls.
 class AFDatePicker extends StatefulWidget {
-  final bool isAndroid;
-
   /// String to be placed above the Icon and Input widgets.
   final String title;
 
@@ -119,7 +138,6 @@ class AFDatePicker extends StatefulWidget {
     this.firstDate,
     this.lastDate,
     this.inputDateTimeFormat,
-    this.isAndroid, // This property is only added to showcase the iOS date picker in web
   }) : super(key: key);
 
   @override
@@ -200,7 +218,7 @@ class _AFDatePickerState extends State<AFDatePicker> {
 
   /// Handles DateInputs onTap event and displays platform appropriate date picker.
   Future<DateTime> onDateInputTap(BuildContext context, DateTime dateProperty, TextEditingController textController) async {
-    if (widget.isAndroid) {
+    if (true) {
       if ([AFDatePickerType.Date, AFDatePickerType.DateTime].contains(widget.type)) {
         dateProperty = await showDatePicker(
           context: context,
