@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
           title: const Text('DatePicker Sample Code'),
         ),
         body: Column(
-          crossAxisAlignment: CrossAxisAlingment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             // NOTE: DateFormatting is included when using the widget natively.
@@ -220,7 +220,7 @@ class _AFDatePickerState extends State<AFDatePicker> {
           dateProperty = DateTime(dateProperty.year, dateProperty.month, dateProperty.day, _time.hour, _time.minute);
         }
       }
-    } else if (widget.isAndroid) {
+    } else {
       await showCupertinoModalPopup(
           context: context,
           builder: (_) {
