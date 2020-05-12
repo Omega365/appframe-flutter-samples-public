@@ -1,5 +1,5 @@
-
 import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 
 void main() => runApp(MyApp());
 
@@ -11,29 +11,27 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: _title,
-      home: MyStatefulWidget(),
-    );
-  }
-}
+      home: Scaffold(
+        appBar: AppBar(
+          title: const Text('DatePicker Sample Code'),
+        ),
+        body: Column(
+          crossAxisAlignment: CrossAxisAlingment.center,
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            // NOTE: DateFormatting is included when using the widget natively.
+            // Due to current DartPad limitations, it's not possible to showcase 
+            // the formatting functionality here.
 
-class MyStatefulWidget extends StatefulWidget {
-  MyStatefulWidget({Key key}) : super(key: key);
+            // NOTE: The [isAndroid] property is only added in the sample to showcase
+            // date pickers for both iOS and Android. It's handled automatically when
+            // developing native application.
 
-  @override
-  _MyStatefulWidgetState createState() => _MyStatefulWidgetState();
-}
-
-class _MyStatefulWidgetState extends State<MyStatefulWidget> {
-  int _count = 0;
-
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Sample Code'),
-      ),
-      body: Center(child: 
-        AFDatePicker(
-              title: 'Android',
+            // Android sample
+            AFDatePicker(title: 'Android Sample', isAndroid: true),
+            // iOS sample
+            AFDatePicker(title: 'iOS Sample', isAndroid: false),
+          ],
         ),
       ),
     );
@@ -42,6 +40,8 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
 
 /// Appframe Date Picker widget, respects native date input controls.
 class AFDatePicker extends StatefulWidget {
+  final bool isAndroid;
+
   /// String to be placed above the Icon and Input widgets.
   final String title;
 
@@ -119,6 +119,7 @@ class AFDatePicker extends StatefulWidget {
     this.firstDate,
     this.lastDate,
     this.inputDateTimeFormat,
+    this.isAndroid, // This property is only added to showcase the iOS date picker in web
   }) : super(key: key);
 
   @override
@@ -199,8 +200,7 @@ class _AFDatePickerState extends State<AFDatePicker> {
 
   /// Handles DateInputs onTap event and displays platform appropriate date picker.
   Future<DateTime> onDateInputTap(BuildContext context, DateTime dateProperty, TextEditingController textController) async {
-    var me = true;
-    if (me) {
+    if (widget.isAndroid) {
       if ([AFDatePickerType.Date, AFDatePickerType.DateTime].contains(widget.type)) {
         dateProperty = await showDatePicker(
           context: context,
@@ -220,7 +220,7 @@ class _AFDatePickerState extends State<AFDatePicker> {
           dateProperty = DateTime(dateProperty.year, dateProperty.month, dateProperty.day, _time.hour, _time.minute);
         }
       }
-    } else if (me) {
+    } else if (widget.isAndroid) {
       await showCupertinoModalPopup(
           context: context,
           builder: (_) {
