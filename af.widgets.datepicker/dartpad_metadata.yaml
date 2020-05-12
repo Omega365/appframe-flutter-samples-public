@@ -1,0 +1,5 @@
+name: Appframe flutter datepicker sample.
+mode: flutter
+files:
+  - name: main.dart
+  - name: test.dart
