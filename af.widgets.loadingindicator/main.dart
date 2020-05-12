@@ -72,6 +72,7 @@ class AFLoadingIndicator extends StatelessWidget {
                   ),
                   SizedBox(height: 25),
                   Text("$_text",
+                      textAlign: TextAlign.center,
                       style: Theme.of(context)
                           .textTheme
                           .subtitle2
