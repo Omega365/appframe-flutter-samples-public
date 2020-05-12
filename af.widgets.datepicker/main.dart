@@ -5,7 +5,7 @@ void main() => runApp(MyApp());
 
 /// This Widget is the main application widget.
 class MyApp extends StatelessWidget {
-  static const String _title = 'Flutter Code Sample';
+  static const String _title = 'Date Picker Sample';
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
       title: _title,
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('DatePicker Sample Code'),
+          title: const Text(_title),
         ),
         body: Container(
           padding: EdgeInsets.all(20),

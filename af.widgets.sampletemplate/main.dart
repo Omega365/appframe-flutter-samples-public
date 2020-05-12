@@ -9,7 +9,7 @@ class MyApp extends StatelessWidget {
       title: _title,
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('Loading Indicator Sample Code'),
+          title: const Text(_title),
         ),
         body: // BUILD YOUR WIDGET HERE
       ),

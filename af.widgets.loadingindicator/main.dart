@@ -4,7 +4,7 @@ void main() => runApp(MyApp());
 
 /// This Widget is the main application widget.
 class MyApp extends StatelessWidget {
-  static const String _title = 'Flutter Code Sample';
+  static const String _title = 'Loading Indicator Sample';
 
   @override
   Widget build(BuildContext context) {
@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
       title: _title,
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('Loading Indicator Sample Code'),
+          title: const Text(_title),
         ),
         body: Center(child: 
           // Construct the building indicator widget
